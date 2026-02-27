@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saarthi AI - Voice-First Digital India Assistant</title>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar" id="announcementBar">
+        <!-- Scrolling ticker -->
+        <div class="announcement-marquee">
+            <div class="announcement-track">
+                <!-- Item 1 -->
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">🎉 PM Vishwakarma Scheme is now live — Artisans &amp; craftspeople
+                        can apply for up to ₹3 lakh support!</span>
+                    <a href="#categories" class="announcement-cta">Learn More →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+                <!-- Item 2 -->
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">📢 National Health Protection Scheme — Get health cover up to ₹5
+                        lakhs for your family. Apply today!</span>
+                    <a href="#categories" class="announcement-cta">Apply Now →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+                <!-- Item 3 -->
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">🌾 Farmers Income Support: Direct ₹6,000/year benefit now available
+                        for all eligible farmer families.</span>
+                    <a href="#categories" class="announcement-cta">Check Eligibility →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+                <!-- Duplicate set for seamless loop -->
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">🎉 PM Vishwakarma Scheme is now live — Artisans &amp; craftspeople
+                        can apply for up to ₹3 lakh support!</span>
+                    <a href="#categories" class="announcement-cta">Learn More →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">📢 National Health Protection Scheme — Get health cover up to ₹5
+                        lakhs for your family. Apply today!</span>
+                    <a href="#categories" class="announcement-cta">Apply Now →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+                <span class="announcement-item">
+                    <span class="announcement-badge">🆕 NEW</span>
+                    <span class="announcement-text">🌾 Farmers Income Support: Direct ₹6,000/year benefit now available
+                        for all eligible farmer families.</span>
+                    <a href="#categories" class="announcement-cta">Check Eligibility →</a>
+                </span>
+                <span class="announcement-sep">✦</span>
+            </div>
+        </div>
+
+        <!-- Close button -->
+        <!-- <button class="announcement-close" id="announcementClose" aria-label="Close announcement">✕</button> -->
+    </div>
+
+    <header id="header">
+        <nav class="container">
+
+            <!-- Logo -->
+            <div class="logo" onclick="window.location.reload();" style="cursor:pointer;">
+                Saarthi AI
+            </div>
+
+            <!-- Nav Links -->
+            <ul class="nav-links">
+                <li><a href="#categories" data-i18n="allSchemes">Schemes</a></li>
+                <li><a href="#languages" class="nav-link">Languages</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <!-- <li><a href="dashboard.html"
+                        onclick="if(!localStorage.getItem('saarthi_token')){event.preventDefault();window.location.href='login.html';}"
+                        class="nav-link">
+                        Dashboard
+                    </a></li> -->
+
+                <!-- ✅ NEW: Dashboard Button -->
+                <!-- <li>
+                    <a href="dashboard.html" class="dashboard-btn">
+                        <i class="fas fa-th-large"></i> Dashboard
+                    </a>
+                </li> -->
+
+                <!-- ✅ NEW: Round Profile Icon -->
+                <li>
+                    <a href="profile.html"
+                        onclick="if(!localStorage.getItem('saarthi_token')){event.preventDefault();window.location.href='login.html';}"
+                        class="profile-icon-round">
+                        <i class="fas fa-user"></i>
+                        <img src="blank-profile-picture-973460_640.webp" alt="User Profile">
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <section class="hero" id="heroSection">
+        <div class="hero-content">
+            <h1>Digital India, In Your Voice</h1>
+            <p>Breaking barriers of language and literacy. Access government services, schemes, and information through
+                simple voice commands in your mother tongue.</p>
+
+            <!-- Simple Voice Interface - Initial State -->
+            <div class="voice-interface-simple" id="voiceInterfaceSimple">
+                <div class="mic-circle" id="micCircleLarge">
+                    <button class="mic-button-large" id="micButtonLarge" aria-label="Voice input">
+                        🎤
+                    </button>
+                    <div class="mic-circle-bg">
+                        <!-- Pulse rings -->
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring"></div>
+                    </div>
+                </div>
+
+                <input type="text" class="input-box-simple" id="textInputSimple" placeholder="Ask anything in your language...">
+
+                <div class="status-text-simple" id="statusTextSimple"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Only View - Appears after interaction -->
+    <div class="chat-only-view" id="chatOnlyView">
+        <div class="voice-interface-full">
+
+            <!-- Back Button -->
+            <button class="back-button" id="backButton" aria-label="Go back to home">
+                <span class="back-arrow">←</span>
+                <span class="back-text">Back to Home</span>
+            </button>
+
+            <div class="language-selector">
+                <label for="language">Choose Your Language: </label>
+                <select id="language">
+                    <option value="hi-IN">हिंदी (Hindi)</option>
+                    <option value="en-IN">English</option>
+                    <option value="bn-IN">বাংলা (Bengali)</option>
+                    <option value="te-IN">తెలుగు (Telugu)</option>
+                    <option value="mr-IN">मराठी (Marathi)</option>
+                    <option value="ta-IN">தமிழ் (Tamil)</option>
+                    <option value="gu-IN">ગુજરાતી (Gujarati)</option>
+                    <option value="kn-IN">ಕನ್ನಡ (Kannada)</option>
+                    <option value="ml-IN">മലയാളം (Malayalam)</option>
+                    <option value="pa-IN">ਪੰਜਾਬੀ (Punjabi)</option>
+                </select>
+            </div>
+
+            <div class="chat-display" id="chatDisplay">
+                <div class="message assistant-message">
+                    👋 Namaste! How can I help you with government services today?
+                </div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" class="text-input" id="textInput" placeholder="Type your message or use voice..."
+                    aria-label="Message input">
+                <button class="mic-button" id="micButton" aria-label="Voice input">
+                    🎤
+                </button>
+                <button class="send-button" id="sendButton" aria-label="Send message">
+                    ➤
+                </button>
+            </div>
+
+            <div class="status-text" id="statusText"></div>
+        </div>
+    </div>
+
+    <!-- Featured Schemes -->
+    <section class="section-wrapper featured-section">
+        <div class="text-center">
+            <h2 class="section-title" data-i18n="trendingSchemes">Trending & Featured Schemes</h2>
+            <p class="section-subtitle" data-i18n="trendingSub">Discover the most applied for government programs.</p>
+        </div>
+        <div class="schemes-grid">
+            <div class="scheme-card" data-scheme="health-protection">
+                <div class="scheme-tag" data-i18n="health">Health & Wellness</div>
+                <h3 data-i18n="healthScheme">National Health Protection Scheme</h3>
+                <p class="scheme-desc" data-i18n="healthDesc">Health insurance cover up to ₹5 lakhs per family for
+                    secondary & tertiary care.</p>
+                <div class="eligibility-box">
+                    <p class="eligibility-label" data-i18n="whoCanApply">Who can apply?</p>
+                    <p class="eligibility-value" data-i18n="lowIncome">Low-income families</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="details-link" data-i18n="readDetails">📄 Read Details</a>
+                    <button class="apply-btn" data-i18n="applyNow">Apply Now</button>
+                </div>
+            </div>
+            <div class="scheme-card" data-scheme="farmers-support">
+                <div class="scheme-tag" data-i18n="agriculture">Agriculture</div>
+                <h3 data-i18n="farmerScheme">Farmers Income Support</h3>
+                <p class="scheme-desc" data-i18n="farmerDesc">Direct income support of ₹6,000 per year to all
+                    landholding farmer families.</p>
+                <div class="eligibility-box">
+                    <p class="eligibility-label" data-i18n="whoCanApply">Who can apply?</p>
+                    <p class="eligibility-value" data-i18n="smallFarmers">Small & marginal farmers</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="details-link" data-i18n="readDetails">📄 Read Details</a>
+                    <button class="apply-btn" data-i18n="applyNow">Apply Now</button>
+                </div>
+            </div>
+            <div class="scheme-card" data-scheme="girl-scholarship">
+                <div class="scheme-tag" data-i18n="education">Education</div>
+                <h3 data-i18n="girlScheme">Girl Child Education Scholarship</h3>
+                <p class="scheme-desc" data-i18n="girlDesc">Financial assistance to encourage families to educate girl
+                    children.</p>
+                <div class="eligibility-box">
+                    <p class="eligibility-label" data-i18n="whoCanApply">Who can apply?</p>
+                    <p class="eligibility-value" data-i18n="girlStudents">Girl students (Class 9-12)</p>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="details-link" data-i18n="readDetails">📄 Read Details</a>
+                    <button class="apply-btn" data-i18n="applyNow">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="section-wrapper">
+        <div class="section-header">
+            <div>
+                <h2 data-i18n="exploreByCategory" class="animate-on-scroll">Explore by Category</h2>
+                <p data-i18n="categorySub" class="animate-on-scroll">Find schemes tailored to your specific needs.</p>
+            </div>
+            <a href="my-schemes.html" class="view-all" data-i18n="viewAll">View All ›</a>
+        </div>
+        <div class="category-grid">
+            <div class="category-card" data-category="Agriculture">
+                <div class="feature-card animate-on-scroll">
+                    <div class="category-icon">🌾</div>
+                    <h3 data-i18n="agriculture">Agriculture</h3>
+                    <p class="scheme-count">42 <span data-i18n="activeSchemes">Active Schemes</span></p>
+                </div>
+            </div>
+            <div class="category-card" data-category="Health">
+                <div class="feature-card animate-on-scroll">
+                    <div class="category-icon">💙</div>
+                    <h3 data-i18n="health">Health & Wellness</h3>
+                    <p class="scheme-count">28 <span data-i18n="activeSchemes">Active Schemes</span></p>
+                </div>
+            </div>
+            <div class="category-card" data-category="Education">
+                <div class="feature-card animate-on-scroll">
+                    <div class="category-icon">🎓</div>
+                    <h3 data-i18n="education">Education</h3>
+                    <p class="scheme-count">35 <span data-i18n="activeSchemes">Active Schemes</span></p>
+                </div>
+            </div>
+            <div class="category-card" data-category="Social">
+                <div class="feature-card animate-on-scroll">
+                    <div class="category-icon">👥</div>
+                    <h3 data-i18n="socialWelfare">Social Welfare</h3>
+                    <p class="scheme-count">56 <span data-i18n="activeSchemes">Active Schemes</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="languages" class="languages">
+        <div class="container">
+            <h2 class="animate-on-scroll">Speak Your Language</h2>
+            <div class="language-tags animate-scale">
+                <span class="language-tag">हिंदी (Hindi)</span>
+                <span class="language-tag">বাংলা (Bengali)</span>
+                <span class="language-tag">తెలుగు (Telugu)</span>
+                <span class="language-tag">मराठी (Marathi)</span>
+                <span class="language-tag">தமிழ் (Tamil)</span>
+                <span class="language-tag">ગુજરાતી (Gujarati)</span>
+                <span class="language-tag">ಕನ್ನಡ (Kannada)</span>
+                <span class="language-tag">മലയാളം (Malayalam)</span>
+                <span class="language-tag">ਪੰਜਾਬੀ (Punjabi)</span>
+                <span class="language-tag">ଓଡ଼ିଆ (Odia)</span>
+                <span class="language-tag">অসমীয়া (Assamese)</span>
+                <span class="language-tag">English</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="animate-on-scroll">Empowering Every Citizen</h2>
+            <div class="feature-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🗣️</div>
+                    <h3>Voice-First Design</h3>
+                    <p>Speak naturally in your language. No typing, no reading required. Just ask and receive instant
+                        help.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🌐</div>
+                    <h3>22+ Indian Languages</h3>
+                    <p>From Hindi to Tamil, Bengali to Marathi - communicate in the language you're most comfortable
+                        with.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📱</div>
+                    <h3>Works Anywhere</h3>
+                    <p>Access on smartphones, feature phones, or through missed call services. Technology that reaches
+                        everyone.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🏛️</div>
+                    <h3>Government Services</h3>
+                    <p>Apply for schemes, check status, book appointments, and access certificates - all through voice.
+                    </p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is protected with bank-level security. Aadhaar integration for verified access.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Responses</h3>
+                    <p>Get real-time answers and guidance. No waiting in queues or navigating complex websites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="animate-on-scroll" id="footerSection">
+        <div class="container">
+            <p>&copy; 2026 Saarthi AI - Digital India for Everyone</p>
+            <p>Empowering 1.4 billion voices, one conversation at a time</p>
+        </div>
+    </footer>
+
+    <script src="JS/main.js"></script>
+    <!-- <script src="JS/api.js"></script> -->
+    <!-- <script src="https://www.india.gov.in/api/translation/snippet/bundle/file?projectId=edc96308-11d6-49a8-855f-fbcd407e094f" type="text/javascript" data-nscript="afterInteractive"></script> -->
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false, // Prevents auto popup
+                includedLanguages: 'hi,bn,te,ta,mr,gu,kn,ml,pa,or,as,en' // Your languages
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript"
+        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Hidden Google Translate container (required but invisible) -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Script to make your tags trigger translation -->
+
+
+
+</body>
+
+</html>
